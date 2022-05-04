@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:composition>
+	<body>
+		<h2>ESKATZAILE BERRIA SARTU:</h2>
+		<br/>
+		<h:form>
+			USERNAME: 
+			<h:inputText id="us" value="#{eskatzaileaFormMB.username}" required="true" requiredMessage="USERNAME eremua derrigorrezkoa da"/>
+			<br/>
+			PASAHITZA:
+			<h:inputText id="pas" value="#{eskatzaileaFormMB.pasahitza}" required="true" requiredMessage="PASAHITZA eremua derrigorrezkoa da"/>
+			<br/>
+			IZEN-ABIZENAK:
+			<h:inputText id="iz" value="#{eskatzaileaFormMB.izenAbizenak}" required="true" requiredMessage="IZEN-ABIZENAK eremua derrigorrezkoa da"/>
+			<br/>
+			EMAIL:
+			<h:inputText id="em" value="#{eskatzaileaFormMB.email}" required="true" requiredMessage="EMAIL eremua derrigorrezkoa da"/>
+			<br/>
+			TITULOAK:
+			<h:inputText value="#{eskatzaileaFormMB.tituluak}" />
+			<br/>
+			BIZILEKUA:
+			<h:inputText value="#{eskatzaileaFormMB.bizilekua}" />
+			<br/>
+			HIZKUNTZAK:
+			<h:inputText value="#{eskatzaileaFormMB.hizkuntzak}" />
+			<br/>
+			BESTELAKO GAITASUNAK:
+			<h:inputText value="#{eskatzaileaFormMB.gaitasunak}" />
+			<br/>
+			<h:commandButton actionListener="#{erregistratuAtazakMB.eskatzaileaErregistratuDB(eskatzaileaFormMB)}" value="ERREGISTRATU" />
+			<br/>
+			<h:message for="us" style="color:red"/>
+			<br/>
+			<h:message for="pas" style="color:red"/>
+			<br/>
+			<h:message for="iz" style="color:red"/>
+			<br/>
+			<h:message for="em" style="color:red"/>
+			<h:panelGroup rendered="#{erregistratuAtazakMB.kodea!=0}">
+				<h:outputText value="#{erregistratuAtazakMB.mezua}" />
+			</h:panelGroup>
+		</h:form>
+		<form action="#{request.contextPath}/index.xhtml">
+			<button type="submit">UNILINK</button>
+		</form>
+	</body>
+	</ui:composition>
+</html>

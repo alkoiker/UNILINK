@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<body>
+		<h2>ESKAINTZA BAT SARTU:</h2>
+		<h:form>
+			IZENBURUA:
+			<h:inputText id="izenb" value="#{eskaintzaFormMB.izenburua}"  required="true" requiredMessage="IZENBURUA eremua derrigorrezkoa da"/>
+			<br/>
+			AZALPENA:
+			<h:inputText id="azalp" value="#{eskaintzaFormMB.azalpena}" required="true" requiredMessage="AZALPENA eremua derrigorrezkoa da"/>
+			<br/>
+			GRADUAK:
+			<h:selectOneMenu id="grad" value="#{eskaintzaFormMB.graduak}" required="true" requiredMessage="GRADUAK eremua derrigorrezkoa da">
+				<f:selectItem itemValue="Telekomunikazio Ingenieritza" itemLabel="Telekomunikazio Ingenieritza"/>
+				<f:selectItem itemValue="Ingenieritza Industriala" itemLabel="Ingenieritza Industriala"/>
+				<f:selectItem itemValue="Ingenieritza Ambientala" itemLabel="Ingenieritza Ambientala"/>
+				<f:selectItem itemValue="Industria Antolakuntzaren Ingenieritza" itemLabel="Industria Antolakuntzaren Ingenieritza"/>
+			</h:selectOneMenu>
+			<br/>
+			SAILA:
+			<h:inputText value="#{eskaintzaFormMB.saila}"/>
+			<br/>
+			MATERIALA:
+			<h:inputText value="#{eskaintzaFormMB.materiala}"/>
+			<br/>
+			ESKAKIZUNAK:
+			<h:inputText value="#{eskaintzaFormMB.eskakizunak}"/>
+			<br/>
+			IRAUPENA:
+			<h:inputText value="#{eskaintzaFormMB.iraupena}"/>
+			<br/>
+			ORDUAK:
+			<h:inputText value="#{eskaintzaFormMB.orduak}"/>
+			<br/>
+			ORDUTEGIA:
+			<h:inputText value="#{eskaintzaFormMB.ordutegia}"/>
+			<br/>
+			SOLDATA:
+			<h:inputText value="#{eskaintzaFormMB.soldata}"/>
+			<br/>
+			PREZIOA:
+			<h:inputText value="#{eskaintzaFormMB.prezioa}"/>
+			<br/>
+			LEKUA:
+			<h:inputText value="#{eskaintzaFormMB.lekua}"/>
+			<br/>
+			OPORRAK:
+			<h:inputText value="#{eskaintzaFormMB.oporrak}"/>
+			<br/>
+			TUTOREA:
+			<h:inputText value="#{eskaintzaFormMB.tutorea}"/>
+			<br/>
+			DEIALDIA:
+			<h:inputText value="#{eskaintzaFormMB.deialdia}"/>
+			<br/>
+			<h:message for="izenb" style="color:red"/><br />
+			<h:message for="azalp" style="color:red"/><br />
+			<h:message for="grad" style="color:red"/><br />
+			<h:commandButton action="eskaintzaAktiboakBistaratu" actionListener="#{eskaintzaileAtazakMB.eskaintzaIgoDB(eskaintzaFormMB)}" value="ESKAINTZA IGO" />
+		</h:form>
+	</body>
+</html>

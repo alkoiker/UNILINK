@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<body>
+		<h1>ESKAINTZA:</h1>
+		<h:dataTable value="#{eskaintzakViewMB.eskaintzaLortuDB(orokorraAtazakMB.idEskaintza)}" var="e">
+			<h:column>
+			TITULUA: #{e.izenburua} <br />
+			ESKAINTZAILEA: #{e.eskaintzaileaE.izena} <br />
+			<h:form>
+			<h:commandLink action="eskaintzaileDatuakBistaratu" actionListener="#{orokorraAtazakMB.irakProfilaKlikEgin(e.eskaintzaileaE.idEskaintzailea)}" type="submit" value="#{e.eskaintzaileaE.username}" />
+			</h:form>
+			AZALPENA: #{e.azalpena} <br />
+			GRADUA: #{e.graduak} <br />
+			SAILA: #{e.saila} <br />
+			LEKUA: #{e.lekua} <br />
+			IRAUPENA: #{e.iraupena} <br />
+			ORDUTEGIA: #{e.ordutegia} <br />
+			ORDUAK: #{e.orduak} <br />
+			SOLDATA: #{e.soldata} <br />
+			OPORRAK: #{e.oporrak} <br />
+			TUTOREA: #{e.tutorea} <br />
+			DEIALDIA: #{e.deialdia} <br />
+			MATERIALA: #{e.materiala} <br />
+			ESKAKIZUNAK: #{e.eskakizunak} <br />
+			PREZIOA: #{e.prezioa} <br />
+			<br /><br />
+			<h:panelGroup rendered="#{orokorraAtazakMB.rola==2}">
+			<h:panelGroup rendered="#{eskatzaileAtazakMB.botoiaBistaratu(e.idEskaintza)}">
+			<h:form>
+					<h:commandButton actionListener="#{eskatzaileAtazakMB.eskariBatEgin(e)}" type="submit" value="ESKARIA EGIN" />
+			</h:form>
+			</h:panelGroup>
+			<br />
+			<h2>ZEIN DA ZURE IRITZIA?</h2>
+			<h:form>
+				<h:inputText value="#{komentarioakFormMB.testua}" required="true" requiredMessage="Zein da zure iritzia?"/>
+				<h:commandButton actionListener="#{eskatzaileAtazakMB.komentarioaSartuDB(komentarioakFormMB,eskaintzakViewMB,e)}" type="submit" id="submit" value="KOMENTARIO BAT EGIN" />
+			</h:form>
+			
+			</h:panelGroup>
+			</h:column>	
+		</h:dataTable>
+		<br /><br />
+		<h2>KOMENTARIOAK:</h2>
+		<h:dataTable value="#{eskaintzakViewMB.komentarioakLortuDB(orokorraAtazakMB.idEskaintza)}" var="k">
+			<h:column>	
+				#{k.eskatzaileaE.username}
+				&emsp;&emsp;
+				#{k.testua}
+				<br />
+				<h:dataTable value="#{eskaintzakViewMB.erantzunakLortuDB(k.idKomentarioak)}" var="e">
+					<h:column>
+					&emsp;&emsp;&emsp;&emsp;
+					#{e.eskatzaileaE.username}
+					&emsp;&emsp;
+					#{e.testua}
+					<br />
+					</h:column>
+				</h:dataTable>
+				<h:panelGroup rendered="#{orokorraAtazakMB.rola==2}">
+				<h:form>
+					ERANTZUNA EMAN: <br />
+					<h:inputText value="#{komentarioakFormMB.testua}" required="true"/>
+					<h:commandButton actionListener="#{eskatzaileAtazakMB.erantzunaSartuDB(komentarioakFormMB,eskaintzakViewMB,k)}" type="submit" value="ERANTZUN" />
+				</h:form>
+			</h:panelGroup>
+			<hr />
+			</h:column>
+		</h:dataTable>
+	</body>
+</html>

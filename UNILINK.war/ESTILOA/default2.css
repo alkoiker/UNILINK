@@ -1,0 +1,23 @@
+<body class="landing is-preload">
+		<!-- Banner -->
+				<section id="banner">
+					<h2>UNILINK</h2>
+					<p>EHUko ikalseentzako lan, praktika, GRAL... bilatzailea</p>
+					<ul class="actions special">
+						<li><a href="#" class="button primary">Sign Up</a></li>
+						<li><a href="#" class="button">Log In</a></li>
+					</ul>
+				</section>
+
+			<!-- Main -->
+				
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>

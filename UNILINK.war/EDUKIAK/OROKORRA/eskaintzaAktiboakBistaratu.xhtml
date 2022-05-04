@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+	<body>
+	<p>#{eskaintzaileAtazakMB.mezua}</p>
+	<form action="#{request.contextPath}/EDUKIAK/OROKORRA/eskaintzaAktiboakBistaratu.xhtml">
+		<input type="submit" value="UNILINK LOGOA" />
+	</form>
+		<h2>Eskaintzak</h2>
+		<h:dataTable value="#{eskaintzaAktiboakViewMB.eskaintzaAktiboakLortuDB()}" var="e">
+		<h:column>
+			<h:form>
+				<h:commandLink action="eskaintza" actionListener="#{orokorraAtazakMB.eskaintzaKlikEgin(e.idEskaintza)}" type="submit" value="#{e.izenburua}" />
+			</h:form>
+			<br />
+			<h:form>
+				<h:commandLink action="eskaintzaileDatuakBistaratu" actionListener="#{orokorraAtazakMB.irakProfilaKlikEgin(e.eskaintzaileaE.idEskaintzailea)}" type="submit" value="#{e.eskaintzaileaE.username}" />
+			</h:form>
+			<br />
+			#{e.graduak} <br />
+			<h:panelGroup rendered="#{orokorraAtazakMB.rola==2}">
+			<h:panelGroup rendered="#{eskatzaileAtazakMB.botoiaBistaratu(e.idEskaintza)}">
+				<h:form>
+					<h:commandButton actionListener="#{eskatzaileAtazakMB.eskariBatEgin(e, eskaintzaAktiboakViewMB)}" type="submit" value="ESKARIA EGIN" />
+				</h:form>
+			</h:panelGroup>
+			</h:panelGroup>
+			<hr />
+		</h:column>
+	</h:dataTable>
+	<h:panelGroup rendered="#{orokorraAtazakMB.rola==1}">
+		<form action="#{request.contextPath}/EDUKIAK/OROKORRA/eskaintzaIgo.xhtml">
+			<button type="submit">ESKAINTZA BAT IGO</button>
+		</form>
+	</h:panelGroup>
+	<form action="#{request.contextPath}/EDUKIAK/OROKORRA/datuakBistaratu.xhtml">
+		<button type="submit">PROFILA IKUSI</button>
+	</form>
+	</body>
+	
+</html>
